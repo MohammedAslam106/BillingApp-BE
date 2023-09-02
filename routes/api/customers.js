@@ -5,7 +5,7 @@ const Customer=require('../../Schemas/customer')
 routes.get('/',async(req,res)=>{
     try{
         const user=req.user
-        const response=await Customer.find()
+        const response=await Customer.find().populate('bills')
         res.json({response:response})
     }
     catch(error){
