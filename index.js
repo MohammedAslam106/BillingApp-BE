@@ -5,11 +5,12 @@ const app=express()
 require('dotenv').config()
 const allRoutes=require('./routes/api')
 const MONGODB_SERVER=process.env.MONGODB_ATLAS
+const bodyParser=require('body-parser')
 
 
 mongoose.connect(`${MONGODB_SERVER}/billingApplication`).then((res)=>console.log('connected to database')).catch((error)=>console.log(error))
 
-app.use(express.json())
+app.use(bodyParser.json())
 app.use(cors())
 app.use('/api',allRoutes)
 
